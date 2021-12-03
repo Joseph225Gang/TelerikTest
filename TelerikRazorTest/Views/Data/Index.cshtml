@@ -1,0 +1,26 @@
+﻿@model IEnumerable<TelerikRazorTest.Models.auth_Users>
+@using Kendo.Mvc.UI
+
+@(Html.Kendo().Grid(Model)
+    .Name("Grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.UserId).Title("UserId");
+        columns.Bound(p => p.UserName).Title("UserName");
+        columns.Bound(p => p.UserCode).Title("UserCode");
+        columns.Bound(p => p.Lst_Maint_Usr).Title("Lst_Maint_Usr");
+        columns.Bound(p => p.Lst_Maint_Dt).Title("Lst_Maint_Dt");
+    })
+    .Pageable(pager => pager
+    .PageSizes(new int[] { 10, 20, 50})
+    .Info(true)
+    )
+    .Sortable()
+    .Scrollable(scr=>scr.Height(430))
+    .Filterable()
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+     )
+)
